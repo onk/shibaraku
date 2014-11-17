@@ -7,11 +7,11 @@ require "shibaraku/version"
 Gem::Specification.new do |s|
   s.name        = "shibaraku"
   s.version     = Shibaraku::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Shibaraku."
-  s.description = "TODO: Description of Shibaraku."
+  s.authors     = ["Takafumi ONAKA"]
+  s.email       = ["takafumi.onaka@gmail.com"]
+  s.homepage    = "https://github.com/onk/shibaraku"
+  s.summary     = "Manage model with a period on ActiveRecord."
+  s.description = "Manage model with a period on ActiveRecord."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
