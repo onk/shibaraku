@@ -3,7 +3,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 ActiveRecord::Schema.define version: 0 do
-  create_table :campaign, force: true do |t|
+  create_table :campaigns, force: true do |t|
     t.datetime :start_at
     t.datetime :end_at
   end
