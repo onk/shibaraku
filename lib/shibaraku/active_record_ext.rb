@@ -25,6 +25,14 @@ module Shibaraku
       def in_time?(now = Time.current)
         (start_at.nil? || start_at <= now) && (end_at.nil? || now < end_at)
       end
+
+      def human_readable_end_at
+        if end_at && end_at == end_at.beginning_of_day
+          end_at - 1.second
+        else
+          end_at
+        end
+      end
     end
   end
 end

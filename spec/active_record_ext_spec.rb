@@ -40,4 +40,19 @@ describe Shibaraku::ActiveRecordExt do
                                  @old_future, @now_future]
     end
   end
+
+  describe "#human_readable_end_at" do
+    subject { campaign.human_readable_end_at }
+    let(:campaign) { Campaign.new(end_at: end_at) }
+
+    context "xx:00:00" do
+      let(:end_at) { Time.local(2014, 12, 5, 0, 0) }
+      it { should == Time.local(2014, 12, 4, 23, 59, 59) }
+    end
+
+    context "xx:00:01" do
+      let(:end_at) { Time.local(2014, 12, 5, 0, 1) }
+      it { should == Time.local(2014, 12, 5, 0, 1) }
+    end
+  end
 end
