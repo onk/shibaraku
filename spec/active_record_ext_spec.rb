@@ -49,16 +49,16 @@ describe Shibaraku::ActiveRecordExt do
     context Campaign do
       include_context "テスト用のデータ一式 Campaign"
       it "find from <= now < to" do
-        expect(Campaign.in_time.to_a).to eq [@null_null, @null_future, @old_null, @now_null,
-                                             @old_future, @now_future]
+        expect(Campaign.in_time(@now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                   @old_future, @now_future]
       end
     end
 
     context Event do
       include_context "テスト用のデータ一式 Event"
       it "find from <= now < to" do
-        expect(Event.in_time.to_a).to eq [@null_null, @null_future, @old_null, @now_null,
-                                          @old_future, @now_future]
+        expect(Event.in_time(@now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                @old_future, @now_future]
       end
     end
   end
