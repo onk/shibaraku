@@ -7,8 +7,17 @@ ActiveRecord::Schema.define version: 0 do
     t.datetime :start_at
     t.datetime :end_at
   end
+
+  create_table :events, force: true do |t|
+    t.datetime :started_at
+    t.datetime :ended_at
+  end
 end
 
 class Campaign < ActiveRecord::Base
   shibaraku
+end
+
+class Event < ActiveRecord::Base
+  shibaraku start_at: :started_at, end_at: :ended_at
 end
