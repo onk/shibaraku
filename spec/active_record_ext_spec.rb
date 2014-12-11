@@ -45,20 +45,39 @@ describe Shibaraku::ActiveRecordExt do
     end
   end
 
+  let(:user) { double("user", super_user?: false) }
+
   describe ".in_time(now)" do
     context Campaign do
       include_context "テスト用のデータ一式 Campaign"
-      it "find from <= now < to" do
-        expect(Campaign.in_time(@now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
-                                                   @old_future, @now_future]
+
+      context "normal user" do
+        it "find from <= now < to" do
+          expect(Campaign.in_time(user, @now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                           @old_future, @now_future]
+        end
+      end
+
+      context "super user" do
+        let(:user) { double("user", super_user?: true) }
+
+        before do
+          @old_now.test_start_at = @old
+          @old_now.test_end_at   = @now
+          @old_now.save
+        end
+
+        it "find from <= now < to" do
+          expect(Campaign.in_time(user, @now).to_a).to eq(@records - [@old_now])
+        end
       end
     end
 
     context Event do
       include_context "テスト用のデータ一式 Event"
       it "find from <= now < to" do
-        expect(Event.in_time(@now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
-                                                @old_future, @now_future]
+        expect(Event.in_time(user, @now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                      @old_future, @now_future]
       end
     end
   end
@@ -68,7 +87,7 @@ describe Shibaraku::ActiveRecordExt do
       include_context "テスト用のデータ一式 Campaign"
 
       it "return from <= now < to" do
-        in_time_arr = @records.select { |e| e.in_time?(@now) }
+        in_time_arr = @records.select { |e| e.in_time?(user, @now) }
         expect(in_time_arr).to eq [@null_null, @null_future, @old_null, @now_null,
                                    @old_future, @now_future]
       end
@@ -78,7 +97,7 @@ describe Shibaraku::ActiveRecordExt do
       include_context "テスト用のデータ一式 Event"
 
       it "return from <= now < to" do
-        in_time_arr = @records.select { |e| e.in_time?(@now) }
+        in_time_arr = @records.select { |e| e.in_time?(user, @now) }
         expect(in_time_arr).to eq [@null_null, @null_future, @old_null, @now_null,
                                    @old_future, @now_future]
       end

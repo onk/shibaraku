@@ -15,6 +15,18 @@ module Shibaraku
         self.shibaraku_end_at_column   = options[:end_at]   || :end_at
         include Shibaraku::ActiveRecordExt::Core
       end
+
+      def shibaraku_start_at_column_name(user)
+        name = self.shibaraku_start_at_column
+        name = "test_#{name}" if user && user.super_user?
+        name
+      end
+
+      def shibaraku_end_at_column_name(user)
+        name = self.shibaraku_end_at_column
+        name = "test_#{name}" if user && user.super_user?
+        name
+      end
     end
 
     module Core
@@ -22,31 +34,31 @@ module Shibaraku
         model.extend ClassMethods
       end
 
-      def shibaraku_start_at
-        public_send(self.class.shibaraku_start_at_column)
+      def shibaraku_start_at(user)
+        public_send(self.class.shibaraku_start_at_column_name(user))
       end
 
-      def shibaraku_end_at
-        public_send(self.class.shibaraku_end_at_column)
+      def shibaraku_end_at(user)
+        public_send(self.class.shibaraku_end_at_column_name(user))
       end
 
       module ClassMethods
-        def in_time(now = Time.current)
-          start_at = shibaraku_start_at_column
-          end_at   = shibaraku_end_at_column
+        def in_time(user, now = Time.current)
+          start_at = shibaraku_start_at_column_name(user)
+          end_at   = shibaraku_end_at_column_name(user)
           where("(#{start_at} IS NULL OR #{start_at} <= :now) AND (#{end_at} IS NULL OR :now < #{end_at})", now: now)
         end
       end
 
-      def in_time?(now = Time.current)
-        (shibaraku_start_at.nil? || shibaraku_start_at <= now) && (shibaraku_end_at.nil? || now < shibaraku_end_at)
+      def in_time?(user, now = Time.current)
+        (shibaraku_start_at(user).nil? || shibaraku_start_at(user) <= now) && (shibaraku_end_at(user).nil? || now < shibaraku_end_at(user))
       end
 
-      def human_readable_end_at
-        if shibaraku_end_at && shibaraku_end_at == shibaraku_end_at.beginning_of_day
-          shibaraku_end_at - 1.second
+      def human_readable_end_at(user = nil)
+        if shibaraku_end_at(user) && shibaraku_end_at(user) == shibaraku_end_at(user).beginning_of_day
+          shibaraku_end_at(user) - 1.second
         else
-          shibaraku_end_at
+          shibaraku_end_at(user)
         end
       end
     end

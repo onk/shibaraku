@@ -9,6 +9,16 @@
     end
     ```
 
+*   運営ユーザは test_start_at を見る、という運用に対応した
+
+    ```ruby
+    Campaign.in_time(normal_user)
+    # => select start_at <= now < end_at records
+
+    Campaign.in_time(super_user)
+    # => select test_start_at <= now < test_end_at records
+    ```
+
 
 ## Shibaraku v0.0.2 (2014-12-05)
 
