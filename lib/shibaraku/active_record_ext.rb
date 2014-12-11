@@ -18,14 +18,20 @@ module Shibaraku
 
       def shibaraku_start_at_column_name(user)
         name = self.shibaraku_start_at_column
-        name = "test_#{name}" if user && user.super_user?
+        name = test_column_name(name) if user && user.super_user?
         name
       end
 
       def shibaraku_end_at_column_name(user)
         name = self.shibaraku_end_at_column
-        name = "test_#{name}" if user && user.super_user?
+        name = test_column_name(name) if user && user.super_user?
         name
+      end
+
+      def test_column_name(name)
+        define_attribute_methods
+        test_name = "test_#{name}"
+        self.method_defined?(test_name) ? test_name : name
       end
     end
 
