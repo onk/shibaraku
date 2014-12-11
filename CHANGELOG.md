@@ -19,6 +19,10 @@
     # => select test_start_at <= now < test_end_at records
     ```
 
+    **Breaking Change**
+    メソッドの第1引数に `super_user?` が呼べるオブジェクトを渡すように変更しました。
+    全体的にアプリケーション側のコードの修正が必要です。
+
 
 ## Shibaraku v0.0.2 (2014-12-05)
 
