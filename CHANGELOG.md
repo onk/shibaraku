@@ -1,5 +1,9 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v0.0.2...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...master)
+
+
+## Shibaraku v0.0.3 (2014-12-16)
+[full changelog](https://github.com/onk/shibaraku/compare/v0.0.2...v0.0.3)
 
 *   カラム名が `start_at` / `end_at` 決め打ちだったので、`started_at` 等をオプションで渡せるようにした
 
