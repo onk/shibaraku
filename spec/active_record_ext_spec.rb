@@ -82,6 +82,21 @@ describe Shibaraku::ActiveRecordExt do
     end
   end
 
+  describe ".in_time_fromto(now)" do
+    context Campaign do
+      include_context "テスト用のデータ一式 Campaign"
+
+      it "find from <= now < to" do
+        expect(Campaign.in_time_fromto(user, @now, @now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                                      @old_future, @now_future]
+      end
+      it "find from <= now < to" do
+        expect(Campaign.in_time_fromto(user, @future, @now).to_a).to eq [@null_null, @null_future, @old_null, @now_null,
+                                                                         @future_null, @old_future, @now_future, @future_future]
+      end
+    end
+  end
+
   describe "#in_time?(now)" do
     context Campaign do
       include_context "テスト用のデータ一式 Campaign"

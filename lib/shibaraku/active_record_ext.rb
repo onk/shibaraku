@@ -50,9 +50,13 @@ module Shibaraku
 
       module ClassMethods
         def in_time(user, now = Time.current)
-          start_at = shibaraku_start_at_column_name(user)
-          end_at   = shibaraku_end_at_column_name(user)
-          where("(#{start_at} IS NULL OR #{start_at} <= :now) AND (#{end_at} IS NULL OR :now < #{end_at})", now: now)
+          in_time_fromto(user, now, now)
+        end
+
+        def in_time_fromto(user, start_at, end_at)
+          start_at_col = shibaraku_start_at_column_name(user)
+          end_at_col   = shibaraku_end_at_column_name(user)
+          where("(#{start_at_col} IS NULL OR #{start_at_col} <= :start_at) AND (#{end_at_col} IS NULL OR :end_at < #{end_at_col})", start_at: start_at, end_at: end_at)
         end
       end
 

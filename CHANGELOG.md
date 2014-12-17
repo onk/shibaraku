@@ -1,6 +1,14 @@
 ## Shibaraku master (unreleased)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...master)
 
+*   「公開予告のために、24時間以内に開始するものも取得したい」という要望に応える
+    `in_time_fromto` を作成した
+
+    ```ruby
+    # 現在開催中のもの＋24時間以内に開始するもの
+    Event.in_time_fromto(user, 24.hour.since, Time.current)
+    ```
+
 
 ## Shibaraku v0.0.3 (2014-12-16)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.2...v0.0.3)
