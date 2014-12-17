@@ -19,7 +19,7 @@ describe Shibaraku::ActiveRecordExt do
       @records << @old_future    = Campaign.create(start_at: @old,    end_at: @future)
       @records << @now_now       = Campaign.create(start_at: @now,    end_at: @now)
       @records << @now_future    = Campaign.create(start_at: @now,    end_at: @future)
-      @records << @feture_feture = Campaign.create(start_at: @future, end_at: @future)
+      @records << @future_future = Campaign.create(start_at: @future, end_at: @future)
     end
   end
 
@@ -41,7 +41,7 @@ describe Shibaraku::ActiveRecordExt do
       @records << @old_future    = Event.create(started_at: @old,    ended_at: @future)
       @records << @now_now       = Event.create(started_at: @now,    ended_at: @now)
       @records << @now_future    = Event.create(started_at: @now,    ended_at: @future)
-      @records << @feture_feture = Event.create(started_at: @future, ended_at: @future)
+      @records << @future_future = Event.create(started_at: @future, ended_at: @future)
     end
   end
 
