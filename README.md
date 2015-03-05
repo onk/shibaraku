@@ -18,7 +18,7 @@ end
 ```
 
 ```ruby
-Campaign.in_time(user)
+Campaign.in_time
 # => SELECT start_at <= now < end_at records
 
 Campaign.in_time(super_user)
@@ -27,6 +27,6 @@ Campaign.in_time(super_user)
 
 ```ruby
 campaign = Campaign.create(start_at: 1.hour.ago, end_at: 1.hour.since)
-campaign.in_time?(user) # => true
+campaign.in_time? # => true
 ```
 

@@ -1,6 +1,19 @@
 ## Shibaraku master (unreleased)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...master)
 
+*   `.in_time` および `#in_time?` の第一引数(`user`) を省略可能にした
+
+    ```ruby
+    Campaign.in_time
+    # => select start_at <= now < end_at records
+
+    Campaign.in_time(normal_user)
+    # => select start_at <= now < end_at records
+
+    Campaign.in_time(super_user)
+    # => select test_start_at <= now < test_end_at records
+    ```
+
 
 ## Shibaraku v0.0.3 (2014-12-16)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.2...v0.0.3)

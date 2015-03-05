@@ -49,14 +49,14 @@ module Shibaraku
       end
 
       module ClassMethods
-        def in_time(user, now = Time.current)
+        def in_time(user = nil, now = Time.current)
           start_at = shibaraku_start_at_column_name(user)
           end_at   = shibaraku_end_at_column_name(user)
           where("(#{start_at} IS NULL OR #{start_at} <= :now) AND (#{end_at} IS NULL OR :now < #{end_at})", now: now)
         end
       end
 
-      def in_time?(user, now = Time.current)
+      def in_time?(user = nil, now = Time.current)
         (shibaraku_start_at(user).nil? || shibaraku_start_at(user) <= now) && (shibaraku_end_at(user).nil? || now < shibaraku_end_at(user))
       end
 
