@@ -1,5 +1,9 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...master)
+
+
+## Shibaraku v0.0.4 (2015-03-06)
+[full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...v0.0.4)
 
 *   `.in_time` および `#in_time?` の第一引数(`user`) を省略可能にした
 
