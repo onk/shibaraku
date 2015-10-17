@@ -1,5 +1,9 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.1.0...master)
+
+
+## Shibaraku v1.1.0 (2015-10-18)
+[full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...v1.1.0)
 
 *   rubygems.org に公開するため歴史を改ざん
 *   `bundle gem shibaraku` をやり直して最新に追随した
