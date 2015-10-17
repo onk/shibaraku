@@ -30,3 +30,7 @@ campaign = Campaign.create(start_at: 1.hour.ago, end_at: 1.hour.since)
 campaign.in_time? # => true
 ```
 
+License
+--------------------------------
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

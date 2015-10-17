@@ -1,23 +1,27 @@
-$LOAD_PATH.push File.expand_path("../lib", __FILE__)
-
-# Maintain your gem's version:
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "shibaraku/version"
 
-# Describe your gem and declare its dependencies:
-Gem::Specification.new do |s|
-  s.name        = "shibaraku"
-  s.version     = Shibaraku::VERSION
-  s.authors     = ["Takafumi ONAKA"]
-  s.email       = ["takafumi.onaka@gmail.com"]
-  s.homepage    = "https://github.com/onk/shibaraku"
-  s.summary     = "Manage model with a period on ActiveRecord."
-  s.description = "Manage model with a period on ActiveRecord."
-  s.license     = "MIT"
+Gem::Specification.new do |spec|
+  spec.name          = "shibaraku"
+  spec.version       = Shibaraku::VERSION
+  spec.authors       = ["Takafumi ONAKA"]
+  spec.email         = ["takafumi.onaka@gmail.com"]
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  spec.summary       = "Manage model with a period on ActiveRecord."
+  spec.description   = "Manage model with a period on ActiveRecord."
+  spec.homepage      = "https://github.com/onk/shibaraku"
+  spec.license       = "MIT"
 
-  s.add_dependency "rails"
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.bindir        = "exe"
+  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.require_paths = ["lib"]
 
-  s.add_development_dependency "mysql2"
-  s.add_development_dependency "rspec"
+  spec.add_runtime_dependency "rails"
+  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "mysql2"
+  spec.add_development_dependency "rspec"
 end

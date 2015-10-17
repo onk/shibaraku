@@ -2,6 +2,7 @@
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...master)
 
 *   rubygems.org に公開するため歴史を改ざん
+*   `bundle gem shibaraku` をやり直して最新に追随した
 
 
 ## Shibaraku v0.0.4 (2015-03-06)
