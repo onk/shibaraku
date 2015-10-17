@@ -1,6 +1,8 @@
 ## Shibaraku master (unreleased)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...master)
 
+*   rubygems.org に公開するため歴史を改ざん
+
 
 ## Shibaraku v0.0.4 (2015-03-06)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.3...v0.0.4)
