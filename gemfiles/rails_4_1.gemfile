@@ -1,0 +1,8 @@
+source "https://rubygems.org"
+
+gem "rails", "~> 4.1.0"
+
+# NOTE: mysql2 v0.4.x will not work with Rails 4.1
+gem "mysql2", "~> 0.3.20"
+
+gemspec path: '../'
