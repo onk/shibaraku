@@ -50,9 +50,11 @@ module Shibaraku
 
       module ClassMethods
         def in_time(user = nil, now = Time.current)
-          start_at = shibaraku_start_at_column_name(user)
-          end_at   = shibaraku_end_at_column_name(user)
-          where("(#{start_at} IS NULL OR #{start_at} <= :now) AND (#{end_at} IS NULL OR :now < #{end_at})", now: now)
+          start_at = arel_table[shibaraku_start_at_column_name(user)]
+          end_at   = arel_table[shibaraku_end_at_column_name(user)]
+          starting = where(start_at.eq(nil).or(start_at.lteq(now)))
+          ending   = where(end_at.eq(nil).or(end_at.gt(now)))
+          starting.merge(ending)
         end
       end
 
