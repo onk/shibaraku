@@ -1,5 +1,8 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v1.1.0...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.2.0...master)
+
+## Shibaraku v1.2.0 (2016-07-12)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.1.0...v1.2.0)
 
 *   [#3] relax dependency version (@onk)
 *   [#2] support join with shibaraku-ize tables (@onk)
