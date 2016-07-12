@@ -1,6 +1,10 @@
 ## Shibaraku master (unreleased)
 [full changelog](https://github.com/onk/shibaraku/compare/v1.1.0...master)
 
+*   [#3] relax dependency version (@onk)
+*   [#2] support join with shibaraku-ize tables (@onk)
+*   [#1] Support matrix versions test on Travis CI (@sue445)
+
 
 ## Shibaraku v1.1.0 (2015-10-18)
 [full changelog](https://github.com/onk/shibaraku/compare/v0.0.4...v1.1.0)
