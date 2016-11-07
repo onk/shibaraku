@@ -3,4 +3,5 @@ require "shibaraku/active_record_ext"
 
 module Shibaraku
 end
-ActiveRecord::Base.send(:include, Shibaraku::ActiveRecordExt)
+
+ActiveRecord::Base.include(Shibaraku::ActiveRecordExt)
