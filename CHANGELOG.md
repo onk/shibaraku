@@ -1,5 +1,8 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v1.2.0...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.3.0...master)
+
+## Shibaraku v1.3.0 (2016-11-08)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.2.0...v1.3.0)
 
 *   [#4] Use ActiveSupport lazy load hook to initialize ActiveRecord (@onk)
 
