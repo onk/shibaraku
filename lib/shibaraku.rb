@@ -3,4 +3,7 @@ require "shibaraku/active_record_ext"
 
 module Shibaraku
 end
-ActiveRecord::Base.send(:include, Shibaraku::ActiveRecordExt)
+
+ActiveSupport.on_load :active_record do
+  ActiveRecord::Base.include(Shibaraku::ActiveRecordExt)
+end
