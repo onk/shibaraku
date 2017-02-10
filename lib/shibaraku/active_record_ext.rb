@@ -15,24 +15,6 @@ module Shibaraku
         self.shibaraku_end_at_column   = options[:end_at]   || :end_at
         include Shibaraku::ActiveRecordExt::Core
       end
-
-      def shibaraku_start_at_column_name(user)
-        name = self.shibaraku_start_at_column
-        name = test_column_name(name) if user && user.super_user?
-        name
-      end
-
-      def shibaraku_end_at_column_name(user)
-        name = self.shibaraku_end_at_column
-        name = test_column_name(name) if user && user.super_user?
-        name
-      end
-
-      def test_column_name(name)
-        define_attribute_methods
-        test_name = "test_#{name}"
-        self.method_defined?(test_name) ? test_name : name
-      end
     end
 
     module Core
@@ -49,6 +31,24 @@ module Shibaraku
       end
 
       module ClassMethods
+        def shibaraku_start_at_column_name(user)
+          name = self.shibaraku_start_at_column
+          name = test_column_name(name) if user && user.super_user?
+          name
+        end
+
+        def shibaraku_end_at_column_name(user)
+          name = self.shibaraku_end_at_column
+          name = test_column_name(name) if user && user.super_user?
+          name
+        end
+
+        def test_column_name(name)
+          define_attribute_methods
+          test_name = "test_#{name}"
+          self.method_defined?(test_name) ? test_name : name
+        end
+
         def in_time(user = nil, now = Time.current)
           if ancestors.include?(::ActiveRecord::Base)
             start_at = arel_table[shibaraku_start_at_column_name(user)]
