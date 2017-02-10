@@ -11,6 +11,8 @@ end
 ActiveSupport.on_load :active_record do
   ActiveRecord::Base.include(Shibaraku::ActiveRecordExt)
 end
-ActiveSupport.on_load :active_hash do
+
+# active_hash do not use ActiveSupport::LazyLoadHooks
+if defined?(ActiveHash)
   ActiveHash::Base.include(Shibaraku::ActiveRecordExt)
 end
