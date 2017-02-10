@@ -7,3 +7,6 @@ end
 ActiveSupport.on_load :active_record do
   ActiveRecord::Base.include(Shibaraku::ActiveRecordExt)
 end
+ActiveSupport.on_load :active_hash do
+  ActiveHash::Base.include(Shibaraku::ActiveRecordExt)
+end
