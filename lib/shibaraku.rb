@@ -1,4 +1,8 @@
 require "active_record"
+begin
+  require "active_hash"
+rescue LoadError
+end
 require "shibaraku/active_record_ext"
 
 module Shibaraku
