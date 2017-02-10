@@ -60,3 +60,11 @@ class UserDepartment < ActiveRecord::Base
   belongs_to :user
   belongs_to :department
 end
+
+class Gift < ActiveHash::Base
+  self.data = [
+    { id: 1, start_at: Time.local(2017, 1, 1), end_at: Time.local(2017, 2, 1) },
+  ]
+
+  shibaraku
+end
