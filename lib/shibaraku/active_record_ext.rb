@@ -50,7 +50,7 @@ module Shibaraku
 
       module ClassMethods
         def in_time(user = nil, now = Time.current)
-          if kind_of?(::ActiveRecord::Base)
+          if ancestors.include?(::ActiveRecord::Base)
             start_at = arel_table[shibaraku_start_at_column_name(user)]
             end_at   = arel_table[shibaraku_end_at_column_name(user)]
             starting = where(start_at.eq(nil).or(start_at.lteq(now)))
