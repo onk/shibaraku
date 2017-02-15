@@ -1,7 +1,11 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v1.3.0...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.4.0...master)
+
+## Shibaraku v1.4.0 (2017-02-15)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.3.0...v1.4.0)
 
 *   [#5] Support ActiveHash (@Narazaka)
+
 
 ## Shibaraku v1.3.0 (2016-11-08)
 [full changelog](https://github.com/onk/shibaraku/compare/v1.2.0...v1.3.0)
