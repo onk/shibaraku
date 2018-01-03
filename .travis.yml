@@ -24,4 +24,3 @@ matrix:
   allow_failures:
   # NOTE: There are unstable versions
   - rvm: ruby-head
-  - gemfile: gemfiles/rails_5_0.gemfile
