@@ -1,5 +1,16 @@
 ## Shibaraku master (unreleased)
-[full changelog](https://github.com/onk/shibaraku/compare/v1.4.0...master)
+[full changelog](https://github.com/onk/shibaraku/compare/v2.0.0...master)
+
+## Shibaraku v2.0.0 (2019-11-29)
+[full changelog](https://github.com/onk/shibaraku/compare/v1.4.0...v2.0.0)
+
+*   [#8] Depend on ActiveRecord only, not rails
+
+### Housekeeping
+
+*   [#10] Setup GitHub Actions
+*   [#9] CI against currently rubies and rails
+
 
 ## Shibaraku v1.4.0 (2017-02-15)
 [full changelog](https://github.com/onk/shibaraku/compare/v1.3.0...v1.4.0)
