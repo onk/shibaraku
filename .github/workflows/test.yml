@@ -1,0 +1,41 @@
+name: Test
+
+on: [push]
+
+jobs:
+  rspec:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        ruby:
+          - 2.5.x
+          - 2.6.x
+        gemfile:
+          - activerecord_5_0.gemfile
+          - activerecord_5_1.gemfile
+          - activerecord_5_2.gemfile
+          - activerecord_6_0.gemfile
+    env:
+      BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - name: apt-get
+        run: |
+          sudo apt-get update
+          sudo apt-get install libmysqlclient-dev
+      - name: bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: beforescript
+        run: |
+          cp spec/database.yml.ci spec/database.yml
+          mysql -uroot -proot -e 'create database shibaraku_test;'
+      - name: test
+        run: |
+          bundle exec rake
